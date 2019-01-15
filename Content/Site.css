@@ -1,0 +1,211 @@
+﻿@font-face {  
+  font-family: Crimson Text;  
+  src: url('../fonts/Crimson Text regular.ttf');
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+    background-color: #f9f9f5;
+}
+body {
+    /*padding-top: 50px;*/
+    padding-bottom: 20px;
+    background-color: #f9f9f5;
+    /* Margin bottom by footer height */
+    margin-bottom: 70px;
+}
+/************************** Override Bootstrap **************************/
+.ist-blue, .navbar-toggle:hover{
+    background-color:#4f819f;
+}
+.navbar{
+    margin-bottom: 0px;
+}
+.navbar-toggle {
+    border-color: #4f819f !important;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+.navbar-brand, .ist-blue a {
+    color: #fff !important;
+}
+.ist-blue a:hover, .ist-blue a:focus {
+    color:#ccc !important;
+}
+/************************** Override Bootstrap End **************************/
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.glyphicon-sort:before {
+    margin-right: 5px;
+}
+
+.sort-row {
+    padding-top:10px;
+}
+
+#ajaxgrid th a, #ajaxgrid_admin th a{
+    color:#fff;
+}
+
+#ajaxgrid th a em, #ajaxgrid_admin th a em{
+    color: #98cfff;
+    margin-left: 5px;
+}
+#ajaxgrid th em, #ajaxgrid_admin th em{
+    color: #fff;
+    margin-left: 37px;
+}
+.webgrid-header, .webgrid-footer{
+    background-color: #4f819f;
+}
+.webgrid-alternating-row{
+    background-color: #fff;
+}
+#ajaxgrid_admin tbody{
+    font-weight: 700;
+}
+#ajaxgrid_admin .delete-form{
+    display:inline;
+    vertical-align: middle;
+}
+.create-user-form{
+    background-color: #efefef;
+    padding-bottom: 1px;
+    display:none; 
+}
+
+.create-user-form option:first-child
+{
+    cursor: default;
+    color: #909090;
+    background-color: #e8e8e8;
+    pointer-events: none;
+}
+
+.hidecol, #ajaxgrid th:nth-child(2) {
+    display:none;
+}
+/************************** Flash messages **************************/
+.flash-container {
+  overflow: hidden;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 0;
+  z-index: 9;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.flash-container.success {
+  height: 100px;
+  background-color: #DFF0D8;
+  color: #6C9B6B;
+  border-color: #00ff21;
+}
+.flash-container.warning {
+  height: 100px;
+  color: #8a6d3b;
+  background-color: #fcf8e3;
+  border-color: #faebcc;
+}
+.flash-container.error {
+  height: 100px;
+  background-color: #F8DFDA;
+  color: #A94442;
+  border-color: #ff0000;
+}
+.flash-container .message {
+  display: inline-block;
+  padding: 64px 20px;
+  border-radius: 0 0 4px 4px;
+}
+
+.left-inner-addon {
+    position: relative;
+}
+.left-inner-addon select {
+    padding-left: 30px;    
+}
+.left-inner-addon i {
+    position: absolute;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+/************************** Footer **************************/
+.footer {
+    background: #4f819f;
+    color: #fff;
+    width: 100%;
+    height:70px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-family: "Crimson Text",Helvetica,Arial,sans-serif;
+}
+ul.contact-list {
+    margin-top: 22px;
+    color: #fff;
+    font-size: 18px;
+}
+@media (max-width: 630px) {
+    ul.contact-list {
+        display: none;
+    }
+}
+ul.fb-footer{
+    float: right;
+    margin-right: 15px;
+    margin-top: 10px;
+    list-style-type: none;
+    font-size: 18px;
+    text-align: right;
+}
+ul.fb-footer a{
+    color: #fff;
+}
+ul.fb-footer a:hover {
+    opacity: 0.3;
+}
+.fb:before{
+    background-image: url(../Images/facebook-square.png);
+    background-repeat: no-repeat;
+    content: "";
+    position: absolute;
+    right: 170px;
+    top: 15px;
+    width: 21px;
+    height: 21px;
+}
+.footer .contact-list li {
+    float: left;
+    margin-right: 40px;
+    list-style-type: disc;
+}
+
+/*Footer ends here*/

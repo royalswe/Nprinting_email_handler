@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AnalyticConfig.Models.SystemAdmin>
+
+@{
+    ViewBag.Title = "Super Admin";
+    var grid = new WebGrid(Model, ajaxUpdateContainerId: "ajaxgrid_admin", ajaxUpdateCallback: "webgridAdmin", rowsPerPage: 50);
+    grid.Pager(WebGridPagerModes.All);
+}
+
+<h2>Lista på administratörer</h2>
+
+@Html.ActionLink("Skapa ny Administratör", "Register", "Admin", new { @class="btn btn-success"})
+
+
+<div id="ajaxgrid_admin" class="row panel-body table-responsive">
+    @grid.GetHtml(
+        tableStyle: "table table-striped table-list table-hover",
+        headerStyle: "webgrid-header",
+        alternatingRowStyle: "webgrid-alternating-row",
+        selectedRowStyle: "webgrid-selected-row",
+        rowStyle: "webgrid-row-style",
+        columns: grid.Columns(
+            grid.Column("CustomerID", "CustomerID", style: "col-md-2"),
+            grid.Column("Customer", "Customer", style: "col-md-2"),
+            grid.Column("Username", "Username", style: "col-md-2"),
+            grid.Column("Email", "Email", style: "col-md-2"),
+            grid.Column("Role", "Role", style: "col-md-2"),
+            grid.Column(canSort: false, style: "col-md-2", format:
+                @<text>
+                    @Html.ActionLink(" ","Edit", new { id = item.Id }, new { @class = "btn btn-info glyphicon glyphicon-pencil" })
+                    @Html.ActionLink(" ", "Details", new { username = item.Username }, new { @class = "btn btn-primary glyphicon glyphicon-user" })
+                    <form action="@Url.Action("Delete")" method="post" class="delete-form" onsubmit="return confirm('Vill du radera @item.Username?')">
+                        <input type="hidden" name="id" value="@item.Id" />            
+                        <button type="submit" class="btn btn-danger">
+                            <i class="glyphicon glyphicon-trash"></i>
+                        </button>
+                    </form>
+                </text>)
+        )
+    )
+</div>
+
+@section Scripts
+{
+    <script src="~/Scripts/webgrid-admin.js"></script>
+}
+

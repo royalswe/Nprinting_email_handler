@@ -1,0 +1,50 @@
+﻿@model IEnumerable<AnalyticConfig.Models.User>
+@{
+    var grid = new WebGrid(Model, ajaxUpdateContainerId: "ajaxgrid", ajaxUpdateCallback: "webgrid", rowsPerPage: (int)ViewBag.PageSize);
+    grid.Pager(WebGridPagerModes.All);
+}
+
+<div id="ajaxgrid" class="row panel-body table-responsive">
+    @grid.GetHtml(
+        tableStyle: "table table-striped table-list table-hover",
+        headerStyle: "webgrid-header",
+        alternatingRowStyle: "webgrid-alternating-row",
+        selectedRowStyle: "webgrid-selected-row",
+        rowStyle: "webgrid-row-style",
+        columns: grid.Columns(
+            grid.Column(canSort: false, style: "col-md-2", format:
+            @<text>
+                <a href='#' class="btn btn-info glyphicon glyphicon-pencil display edit-btn"></a>
+                <a href="#" class="btn btn-success glyphicon glyphicon-ok modify save-btn" data-url="@Url.Action("Edit")" style="display:none"></a>
+                <a href="#" class="btn btn-warning glyphicon glyphicon-remove modify cancel-btn" style="display:none"></a>
+                <a href="#" class="btn btn-danger glyphicon glyphicon-trash display delete-btn" data-url="@Url.Action("Delete")" data-record-id="@item.Id" data-record-title="@item.Name" data-toggle="modal" data-target="#confirm-delete"></a>
+            </text>),
+            grid.Column(null, null, style: "hidecol", format: @<input type="hidden" id="in_ID" value="@item.Id" />),
+            grid.Column("SchoolUnit", "Skolenhet", style: "col-md-2", format:
+            @<text>
+                <span class="display"><label id="lbl_unit">@item.SchoolUnit</label></span>
+                @Html.DropDownList("in_unit", new SelectList(ViewBag.schoolUnitList, "Text", "Value", @item.SchoolUnit), new { @class = "form-control modify" })
+            </text>),
+            grid.Column("Name", "Namn", style: "col-md-2", format:
+            @<text>
+                <span class="display"><label id="lbl_name">@item.Name</label></span>
+                <input type="text" id="in_name" placeholder="Ange namn" value="@item.Name" class="form-control modify" />
+            </text>),
+            grid.Column("Email", "Epost", style: "col-md-3", format:
+            @<text>
+                <span class="display"><label id="lbl_email">@item.Email</label></span>
+                <input type="text" id="in_email" placeholder="Ange epost" value="@item.Email" class="form-control modify" />
+            </text>),
+            grid.Column("Password", "Lösenord", style: "col-md-2", format:
+            @<text>
+                <span class="display"><label id="lbl_password">@(String.IsNullOrEmpty(item.Password) ? "" : "Secret")</label></span>
+                <input type="text" id="in_password" placeholder="Ange lösenord" value="@item.Password" class="form-control modify" />
+            </text>),
+            grid.Column("Role", "Roll", style: "col-md-1", format:
+            @<text>
+                <span class="display"><label id="lbl_role">@item.Role</label></span>
+                @Html.DropDownList("in_role", new SelectList(item.RoleList, "Text", "Value", @item.Role), new { @class = "form-control modify" })
+            </text>)
+        )
+    )
+</div>

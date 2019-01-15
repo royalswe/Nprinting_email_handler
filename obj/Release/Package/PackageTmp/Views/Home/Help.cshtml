@@ -1,0 +1,56 @@
+﻿<div class="jumbotron">
+    <h1 class="display-3">Hjälp guide</h1>
+    <p class="lead">Informations sida om hur applikationen används.</p>
+</div>
+
+<h2>Skapa ny mottagare</h2>
+Klicka på knappen <button type="button" class="show-create-form btn btn-success">Skapa ny mottagare <span class="glyphicon glyphicon-plus"></span></button> för
+att visa ett formulär vilket mottagarens uppgifter fylls i.<br /> 
+Klicka på samma knapp igen om du vill dölja formuläret.
+
+<h2>Radera mottagre</h2>
+Klicka på <a href="#" class="btn btn-danger glyphicon glyphicon-trash display delete-btn"></a> För att ta bort en mottagare.<br />
+
+<h2>Redigera mottagare</h2>
+Klicka på <a href='#' class="btn btn-info glyphicon glyphicon-pencil display"></a> För att redigera en mottagare. Fälten för vald rad blir redigerings bara.<br />
+Klicka på <a href="#" class="btn btn-success glyphicon glyphicon-ok modify"></a> för att spara eventuella ändringar och redigerings läget stängs.<br />
+Ångrar du dina ändringar klickar du i stället på <a href="#" class="btn btn-warning glyphicon glyphicon-remove modify"></a> och ändringarna kommer inte att sparas och redigerings läget stängs.
+
+<h2>Filtrera</h2>
+För att filtrera listan med mottagare på en specifik roll väljer du önskad roll i rullistan 
+
+<div class="left-inner-addon">
+    <i class="glyphicon glyphicon-filter"></i>
+    <select class="form-control">
+        <option selected hidden value="20">Alla roller</option>
+        <option>Alla roller</option>
+        <option>Gy</option>
+        <option>Gr</option>
+        <option>Bo</option>
+        <option>Ekonomi</option>
+    </select>
+</div>
+
+För att filtrera antal rader med mottagare per sida anger du önskat antal i rullistan.
+<div class="left-inner-addon">
+    <i class="glyphicon glyphicon-filter"></i>
+    <select class="form-control">
+        <option selected hidden value="20">Rader per sida</option>
+        <option>20</option>
+        <option>50</option>
+        <option>100</option>
+        <option>500</option>
+    </select>
+</div>
+
+<h2>Sortera</h2>
+För att sortera i bokstavsordning klickar du på <em class="glyphicon glyphicon-sort" style="color: #98cfff"></em> i det fält du vill sortera efter.
+<br /> Klicka igen för att sortera i omvänd ordning.
+
+<h2>Pagenering</h2>
+För att gå till nästa eller föregånde använder du dig av pageneringen som befinner sig under listan med mottagare.<br />
+<img src="~/Images/help_paginate.jpg" />
+
+<br />
+<hr />
+@Html.ActionLink("<< Tillbaka", "Routing", "Account", new { area = "" }, null)

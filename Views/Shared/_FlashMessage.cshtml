@@ -1,0 +1,27 @@
+﻿<div id='flash-container' class='flash-container'></div> @* For AJAX *@
+
+<script>
+    $(document).ready(function () {
+
+    FlashMessage = function (msg, type, time) {
+        time = time || 2000;
+        $('#flash-container')[0].innerHTML = "<div class='success message'>" + msg + "</div>";
+        $('#flash-container').addClass(type);
+        setTimeout(function () {
+            $('#flash-container').removeClass(type);
+        }, time);
+    };
+     
+    if ('@TempData["success"]' !== "")
+    {
+        var msg = '@TempData["success"]';
+        FlashMessage(msg, "success");
+    }
+    else if ('@TempData["error"]' !== "")
+    {
+        var msg = '@TempData["error"]';
+        FlashMessage(msg, "error", 4000);
+    }
+
+})
+</script>

@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "IST Analys";
+}
+<div class="page-header">
+    <h1>Administrera mottagare</h1>
+</div>
+
+@if (Model != null)
+{
+    var userModel = new AnalyticConfig.Models.User();
+    <button type="button" class="show-create-form btn btn-success">Skapa ny mottagare <span class="glyphicon glyphicon-plus"></span></button>
+    <div class="create-user-form">@Html.Partial("_CreateUser", userModel)</div>
+
+    if (TempData["ModelState"] != null) // Show form if validation errors
+    {
+        <script>$('.create-user-form').show();</script>
+    }
+
+    using (Ajax.BeginForm("Index", new AjaxOptions()
+    {
+        OnSuccess = "webgrid",
+        HttpMethod = "GET",
+        InsertionMode = InsertionMode.ReplaceWith,
+        UpdateTargetId = "ajaxgrid"
+    }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row sort-row">
+            <div class="col-xs-5 col-sm-3 col-sm-offset-6">
+                <div class="left-inner-addon">
+                    <i class="glyphicon glyphicon-filter"></i>
+                    @Html.DropDownList("sort_roles", new SelectList(userModel.RoleList, "Text", "Value"), "Alla roller", new { onchange = "$(this.form).submit()", @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-xs-5 col-sm-3">
+                <div class="left-inner-addon">
+                    <i class="glyphicon glyphicon-filter"></i>
+                    <select class="form-control" name="pagesize" onchange="$(this.form).submit()">
+                        <option selected hidden value="20">Rader per sida</option>
+                        <option value="20">20</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                        <option value="500">500</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    }
+
+    @Html.Partial("_WebGrid")
+    @Html.Partial("_DeleteConfirm")
+
+    @section Scripts
+    {
+        @Scripts.Render("~/bundles/webgrid")
+    }
+}
+else
+{
+    <h4> Du har inga mottagare att administrera.</h4>
+}
+
+

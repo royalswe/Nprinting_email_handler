@@ -1,0 +1,73 @@
+﻿<div class="jumbotron">
+    <h1 class="display-3">Hjälp guide</h1>
+    <p class="lead">Beskrivning av applikationens olika delar.</p>
+</div>
+
+<h2>Skapa ny mottagare</h2>
+Klicka på knappen <button type="button" class="btn btn-success btn-xs">Skapa ny mottagare <span class="glyphicon glyphicon-plus"></span></button> för
+att visa ett formulär vilket den nya mottagarens uppgifter fylls i.<br /> 
+Klicka på samma knapp igen alternativt <b>Avbryt</b> om du vill dölja formuläret.
+
+<h2>Redigera mottagare</h2>
+Klicka på <a href='#' class="btn btn-info btn-xs glyphicon glyphicon-pencil display"></a> För att redigera en befintlig mottagare. Fälten för vald rad blir redigerings bara.<br />
+Sedan klicka på <a href="#" class="btn btn-success btn-xs glyphicon glyphicon-ok modify"></a> för att spara eventuella ändringar och redigerings läget stängs.<br />
+Ångrar du dina ändringar klickar du i stället på <a href="#" class="btn btn-warning btn-xs glyphicon glyphicon-remove modify"></a> och ändringarna kommer inte att sparas och redigerings läget stängs.
+För att inaktivera en mottagare klicka på <a href="#" class="btn btn-danger btn-xs glyphicon glyphicon-ban-circle"></a> sedan bekräfta att du vill inaktivera mottagaren.
+
+<h2>Inaktiverade användare</h2>
+Genom att klicka på <button type="submit" class="btn btn-danger btn-xs">Visa inaktiva mottagare</button> visas en lista med inaktiverade mottagare om det finns några.<br />
+För att åter aktivera en mottagare klicka på <a href="#" title="Aktivera användare" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-user"></span> Aktivera</a> sedan bekräfta att du vill aktivera mottagaren.<br />
+Klicka på <a href="#" class="btn btn-danger btn-xs glyphicon glyphicon-trash"></a> För att ta bort en mottagare. Mottagaren kommer inte kunna återskapas.<br />
+
+<h2>Filtrera</h2>
+För att filtrera listan med mottagare på en specifik roll väljer du önskad roll i rullistan 
+
+<div class="left-inner-addon">
+    <i class="glyphicon glyphicon-filter"></i>
+    <select class="form-control">
+        <option selected hidden value="20">Alla roller</option>
+        <option>Alla roller</option>
+        <option>GY</option>
+        <option>GY</option>
+        <option>BO</option>
+    </select>
+</div>
+
+För att filtrera antal rader med mottagare per sida anger du önskat antal i rullistan.
+<div class="left-inner-addon">
+    <i class="glyphicon glyphicon-filter"></i>
+    <select class="form-control">
+        <option selected hidden value="20">Rader per sida</option>
+        <option>20</option>
+        <option>50</option>
+        <option>100</option>
+        <option>500</option>
+    </select>
+</div>
+
+<h2>Sortera</h2>
+För att sortera i bokstavsordning klickar du på <em class="glyphicon glyphicon-sort" style="color: #98cfff"></em> i det fält du vill sortera efter.
+<br /> Klicka igen för att sortera i omvänd ordning.
+
+<h2>Hämta mottagare automatiskt</h2>
+Som standard skapas samtliga mottagare manuellt.
+Som alternativ går det att hämta mottagarna från Analysen för att minimera manuell hantering på sidan. 
+För att hämta mottagare från Analysen kommer en konsult insats krävas.
+
+<h2>Hänglås</h2>
+<img src="~/Images/unlocked.png" />
+Mottagare som är hämtade från Analysen kommer vissas med ett grönt hänglås som standard.
+Det gröna hänglåset indikera att mottagare som redigeras i Extens kommer också bli förändrade automatiskt.<br />
+<img src="~/Images/locked.png" />
+Rött hänglås indikera att mottagaren är låst och kommer inte bli förändrad om förändringar görs i Extens.
+Det går att låsa mottagaren genom att redigera mottagaren sedan klicka på hänglåset.<br />
+<img src="~/Images/lock.png" />
+Grått hänglås indikerar att mottagaren är skapad manuellt och har ingen koppling till Analysen.
+
+<h2>Paginering</h2>
+Om listan med mottagare är fler än antal raders som visas, dyker en paginering upp under listan med mottagare.<br />
+<img src="~/Images/help_paginate.jpg" />
+
+<br />
+<hr />
+@Html.ActionLink("<< Tillbaka", "Routing", "Account", new { area = "" }, null)

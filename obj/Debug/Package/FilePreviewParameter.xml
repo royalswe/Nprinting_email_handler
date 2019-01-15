@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="www.blp2.ist-analys.com/custom" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\ronil\\Documents\\Visual\ Studio\ 2015\\Projects\\AnalyticConfig\\AnalyticConfig\\obj\\Debug\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\ronil\\Documents\\Visual\ Studio\ 2015\\Projects\\AnalyticConfig\\AnalyticConfig\\obj\\Debug\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="MySQLConnection-Web.config Connection String" description="" value="Server=localhost; user id=root; password=password; persist security info=True; database=analytic_config" tags="">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\ronil\\Documents\\Visual\ Studio\ 2015\\Projects\\AnalyticConfig\\AnalyticConfig\\obj\\Debug\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MySQLConnection']/@connectionString" />
+  </parameter>
+</parameters>

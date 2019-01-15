@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex"> <!--Prevent indexing from search engines-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/ico" href="~/Images/favicon.ico">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-default ist-blue navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("IST Analys", "Routing", "Account", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (this.User.IsInRole("admin"))
+                    {
+                        <li><a href="@Url.Action("FetchFromFile", "Admin")"><i class="glyphicon glyphicon-floppy-open"></i>Hämta data</a></li>
+                    }
+                    <li>@Html.ActionLink("Hjälp", "Help", "Home")</li>
+                    
+                </ul>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    <div class="container body-content">
+        <div id='flash-container' class='flash-container'></div>
+        @RenderBody()
+    </div>
+
+    <footer class="footer navbar-fixed-bottom">
+        <ul class="fb-footer">
+            <li><a class="fb" href="https://www.facebook.com/ist.group.global/?ref=bookmarks">Följ IST på Facebook</a></li>
+            <li><a href="http://career.ist.com">Career at IST</a></li>
+        </ul>
+        <ul class="contact-list">
+            <li>IST</li>
+            <li>Ingelstadsvägen 9, 352 34 Växjö</li>
+            <li>info.se@ist.com</li>
+            <li>0470-70 71 00</li>
+        </ul>
+    </footer>
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+    <script>
+        $(document).ready(function () {
+
+            FlashMessage = function (msg, type, time) {
+                time = time || 2000;
+                $('#flash-container')[0].innerHTML = "<div class='success message'>" + msg + "</div>";
+                $('#flash-container').addClass(type);
+                setTimeout(function () {
+                    $('#flash-container').removeClass(type);
+                }, time);
+            };
+
+            if ('@TempData["success"]' !== "") {
+                var msg = '@TempData["success"]';
+                FlashMessage(msg, "success");
+            }
+            else if ('@TempData["error"]' !== "") {
+                var msg = '@TempData["error"]';
+                FlashMessage(msg, "error", 4000);
+            }
+        })
+    </script>
+</body>
+</html>
